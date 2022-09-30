@@ -9,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GraphComponent } from './graph/graph.component';
 import * as fr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+import { NgxEchartsModule } from 'ngx-echarts';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,9 @@ import { registerLocaleData } from '@angular/common';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' }
