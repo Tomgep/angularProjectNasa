@@ -10,6 +10,9 @@ import { GraphComponent } from './graph/graph.component';
 import * as fr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { IncidentTerrestreComponent } from './incident-terrestre/incident-terrestre.component';
+import { FinalSpaceComponent } from './final-space/final-space.component';
+
 
 
 @NgModule({
@@ -17,7 +20,9 @@ import { NgxEchartsModule } from 'ngx-echarts';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    GraphComponent
+    GraphComponent,
+    IncidentTerrestreComponent,
+    FinalSpaceComponent
   ],
   imports: [
     BrowserModule,
