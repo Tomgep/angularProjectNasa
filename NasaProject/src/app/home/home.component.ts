@@ -18,10 +18,8 @@ export class HomeComponent implements OnInit {
     this.configService.getConfig().subscribe((reponse: any) => {
       this.nasa = reponse;
     })
-
-
-
   }
+
 
 
 

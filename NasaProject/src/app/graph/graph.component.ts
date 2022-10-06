@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { reduce } from 'rxjs';
+import { dataTool, number } from 'echarts';
+import mission from '../db/mission.json';
 
 @Component({
   selector: 'app-graph',
@@ -7,17 +8,87 @@ import { reduce } from 'rxjs';
   styleUrls: ['./graph.component.scss']
 })
 
-
 export class GraphComponent implements OnInit {
   options: any;
-  constructor() { }
+  constructor() {
+  }
+
+  getJson(valeur: number) {
+    return mission[valeur];
+  }
+
+  getTable() {
+    var data = [];
+    data.push({
+      name: 'Terre',
+      x: 0,
+      y: 0
+    },)
+
+    for (let i: number = 0; i < mission.length; i++) {
+      data.push({
+        name: mission[i].star_name,
+        x: mission[i].st_dist,
+        y: i * Math.LN2,
+      },);
+    }
+
+    return data;
+
+  }
+
+  getTableLink() {
+    var data1 = [];
+    data1.push({
+      source: 0,
+      target: 1,
+      symbolSize: [0, 0],
+      label: {
+        show: false,
+      }
+    },)
+
+    for (let i: number = 0; i < mission.length; i++) {
+      data1.push({
+        source: 'Terre',
+        target: mission[i].star_name,
+      },)
+    }
+
+    return data1;
+  }
+
+  getStellarColor() {
+    var data2 = [];
+    data2.push('aliceblue')
+
+    for (let i: number = 0; i < mission.length; i++) {
+      if (mission[i].st_bmvsrc === "BVT-Red") {
+        data2.push('darkred')
+      } else if (mission[i].st_bmvsrc === "BVT-Blue") {
+        data2.push('cadetblue')
+      } else {
+        data2.push('chartreuse')
+      }
+    }
+
+
+
+    return data2;
+
+  }
+
 
   ngOnInit(): void {
 
+
+
+    console.log(this.getStellarColor());
     this.options = {
       title: {
-        text: 'Distance Objets Stellaires Par Rapport à la Terre'
+        text: '',
       },
+      color: 'white',
       tooltip: {},
       animationDurationUpdate: 1500,
       animationEasingUpdate: 'quinticInOut',
@@ -25,59 +96,29 @@ export class GraphComponent implements OnInit {
         {
           type: 'graph',
           layout: 'none',
-          symbolSize: 160,
+          symbolSize: 125,
           roam: false,
           label: {
             show: true,
+            fontSize: 20
+
           },
           edgeSymbol: ['circle', 'arrow'],
-          edgeSymbolSize: [5, 10],
+          color: 'darkred',
+          edgeSymbolSize: [2, 5],
+
           edgeLabel: {
             textStyle: {
-              fontSize: 50,
-            },
+              fontSize: 80,
+            }
           },
-          data: [{
-            name: 'Terre',
-            x: 0,
-            y: 0
-          }, {
-            name: 'Node 2',
-            x: 800,
-            y: 300
-          }, {
-            name: 'Node 3',
-            x: 550,
-            y: 100
-          }, {
-            name: 'Node 4',
-            x: 550,
-            y: 500
-          }],
+          data: this.getTable(),
           // links: [],
-          links: [{
-            source: 0,
-            target: 1,
-            symbolSize: [0, 0],
-            label: {
-              show: false,
-            },
+          links: this.getTableLink(),
 
-          }, {
-            source: 'Terre',
-            target: 'Terre'
-          }, {
-            source: 'Node 2',
-            target: 'Terre'
-          }, {
-            source: 'Node 3',
-            target: 'Terre'
-          }, {
-            source: 'Node 4',
-            target: 'Terre'
-          }],
           lineStyle: {
-            opacity: 0.9,
+            opacity: 1,
+            color: 'white',
             width: 2,
             curveness: 0,
           }
