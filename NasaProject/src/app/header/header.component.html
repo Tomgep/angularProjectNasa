@@ -1,13 +1,33 @@
 <div class="row">
-    <div class="col-12 text-center " style="font-style: bold ;">
-        <h1 class="text-light display-1">NASA PROJECT: DE L'ESPACE JUSQU'A VOUS</h1>
+    <div class="col-12" style="font-style: bold ;">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-1 text-end">
+                <img src="../../assets/img/logo.png" width="85px">
+            </div>
+            <div class="col-11">
+                <h1 class="text-light display-1">NASA PROJECT: DE L'ESPACE JUSQU'A VOUS</h1>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="col-12 text-center">
-        <button class="btn btn-light mx-2 p-2 shadow" routerLink="home">Home</button>
-        <button class="btn btn-light mx-2 p-2 shadow" routerLink="graph">Graphique</button>
-        <button class="btn btn-light mx-2 p-2 shadow" routerLink="incident">Crypto</button>
-        <button class="btn btn-light mx-2 p-2 shadow" routerLink="finalSpace">Final Space quotes</button>
+        <div class="btn-group btn-group-lg" role="group">
+            <input type="radio" class="btn-check btn-light mx-2 p-2 shadow" name="btnradio" id="btnradio1"
+                routerLink="home" autocomplete="off" checked>
+            <label class="btn btn-outline-light" for="btnradio1">Home</label>
+
+            <input type="radio" class="btn-check btn-light mx-2 p-2 shadow" name="btnradio" id="btnradio2"
+                routerLink="graph" autocomplete="off">
+            <label class="btn btn-outline-light" for="btnradio2">Graphique</label>
+
+            <input type="radio" class="btn-check btn-light mx-2 p-2 shadow" name="btnradio" id="btnradio3"
+                routerLink="incident" autocomplete="off">
+            <label class="btn btn-outline-light" for="btnradio3">Crypto</label>
+
+            <input type="radio" class="btn-check btn-light mx-2 p-2 shadow" name="btnradio" id="btnradio4"
+                routerLink="finalSpace" autocomplete="off">
+            <label class="btn btn-outline-light" for="btnradio4">Final Space quotes</label>
+        </div>
     </div>
 </div>
